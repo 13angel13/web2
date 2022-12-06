@@ -1,49 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import Remarkable from 'Remarkable';
-var authModule = './auth';
-function App() {
-    class MarkdownEditor extends React.Component {
-        constructor(props) {
-            super(props);
-            this.handleChange = this.handleChange.bind(this);
-            this.state = { value: 'Привет, **мир**!' };
-        }
-
-        handleChange(e) {
-            this.setState({ value: e.target.value });
-        }
-
-        getRawMarkup() {
-            const md = new Remarkable();
-            return { __html: md.render(this.state.value) };
-        }
-
-        render() {
-            return (
-                <div className="MarkdownEditor">
-                    <h3>Входные данные</h3>
-                    <label htmlFor="markdown-content">
-                        Введите что-то в формате Markdown
-                    </label>
-                    <textarea
-                        id="markdown-content"
-                        onChange={this.handleChange}
-                        defaultValue={this.state.value}
-                    />
-                    <h3>Вывод</h3>
-                    <div
-                        className="content"
-                        dangerouslySetInnerHTML={this.getRawMarkup()}
-                    />
-                </div>
-            );
-        }
-    }
+function Welcome(props) {
+    const [value, setValue] = useState();
+    return <>   
+           <br/> {props.name} {value ? value.target.value : ''}
+        <input type={'text'} onChange={setValue} />
+    </>;
 }
-
-ReactDOM.render(
-    <MarkdownEditor />,
-    document.getElementById('markdown-example')
-);
-export default App;
+function App() {
+    return (
+        <div>
+            <Welcome name="Р¤РРћ:" /> <br/>
+            <Welcome name="РќРѕРјРµСЂ:" /><br/>
+            <Welcome name="Email:" /><br/>
+            <Welcome name="Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ" /><br/>
+            <Welcome name="Р‘РёРѕРіСЂР°С„РёСЏ:" /><br/>
+        </div>
+    );
+}
+export default Welcome; 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
