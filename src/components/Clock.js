@@ -40,7 +40,7 @@ class Clock extends React.Component {
             return <div>
                 {date.toLocaleDateString()} <br />
                 {hour}:{min}:{second}
-                <div class="animate__animated animate__wobble"> <h4>animation</h4></div>
+                <div class="animate__animated animate__heartBeat"> <h4>animation</h4></div>
 
             </div>;
         } else {
@@ -49,7 +49,7 @@ class Clock extends React.Component {
                 {/* {date.toLocaleTimeString()} */}
                 {date.toLocaleDateString()} <br />
                 {hour}:{min}:{second}
-                <div class="animate__animated animate__wobble"> <h4>animation</h4></div>
+                <div class="animate__animated animate__heartBeat"> <h4>animation</h4></div>
             </div>;
 
         }
